@@ -4,7 +4,7 @@ import { BigDecimal, Address, BigInt } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD, UNTRACKED_PAIRS } from './helpers'
 
 const WETH_ADDRESS = '0x86652c1301843b4e06fbfbbdaa6849266fb2b5e7'
-const USDC_WETH_PAIR = '0xe52ad67ba7df150947196a046cae83796d1e16a7' // created 10008355
+const USDC_WETH_PAIR = '0x7e37f76428277129bc0f65a9b84db6edba4fd7a2' // created 10008355
 const DAI_WETH_PAIR = '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11' // created block 10042267
 const USDT_WETH_PAIR = '0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852' // created block 10093341
 
@@ -32,7 +32,7 @@ export function getEthPriceInUSD(): BigDecimal {
     return daiPair.token0Price.times(daiWeight).plus(usdcPair.token0Price.times(usdcWeight))
     // USDC is the only pair so far
   } else if (usdcPair !== null) {
-    return usdcPair.token1Price
+    return usdcPair.token0Price
   } else {
     return ZERO_BD
   }
@@ -42,7 +42,7 @@ export function getEthPriceInUSD(): BigDecimal {
 let WHITELIST: string[] = [
   '0x86652c1301843b4e06fbfbbdaa6849266fb2b5e7', // WETH
   '0x6b175474e89094c44da98b954eedeac495271d0f', // DAI
-  '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // USDC
+  '0x4b1691404797d407f5badb1ce1edabf867e271fd', // USDC
   '0xdac17f958d2ee523a2206206994597c13d831ec7', // USDT
   '0x0000000000085d4780b73119b644ae5ecd22b376', // TUSD
   '0x5d3a536e4d6dbd6114cc1ead35777bab948e3643', // cDAI
